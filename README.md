@@ -68,7 +68,6 @@ plt.show()
 ```
 
 ## Output:
-![best fit line](1.png)
 ![best fit line](2.png)
 ![best fit line](3.png)
 
