@@ -22,54 +22,41 @@ Program to implement univariate Linear Regression to fit a straight line using l
 Developed by: SARANKUMAR J
 RegisterNumber: 212221230087
 
-import matplotlib.pyplot as plt
-x=[5,6,3,2,6,7,1,2]
-y=[2,3,6,5,8,3,5,8]
-plt.scatter(x,y)
-plt.show()
-
 import numpy as np
 import matplotlib.pyplot as plt
+#Preprocessing Input data
+X=np.array(eval(input()))
+Y=np.array(eval(input()))
+#Mean
+X_mean=np.mean(X)
+Y_mean=np.mean(Y)
+num=0 #for slope
+denom=0 #for slope
+#to find sum of (xi-x') & (yi-y') & (xi-x')^2
+for i in range(len(X)):
+  num+=(X[i]-X_mean)*(Y[i]-Y_mean)
+  denom+=(X[i]-X_mean)**2
+#calculate slope
+m=num/denom
 
-#assign input
-x=np.array([0,1,2,3,4,5,6,7,8,9])
-y=np.array([1,3,2,5,7,8,8,9,10,12])
+#calculate intercept
+b=Y_mean-m*X_mean
 
-#mean values of input
-x_mean=np.mean(x)
-print(x_mean)
-y_mean=np.mean(y)
-print(y_mean)
+print(m,b)
 
-num=0
-denum=0
+#line equation
+y_predicted=m*X+b
+print(y_predicted)
 
-for i in range(len(x)):
-  num+=(x[i]-x_mean)*(y[i]-y_mean)
-  denum+=(x[i]-x_mean)**2
-
-#find m
-m=num/denum
-
-#find b
-b=y_mean-m*x_mean
-print("m",m)
-print("b",b)
-
-#find y_pred
-y_pred=m*x+b
-print(y_pred)
-
-#plot graph
-plt.scatter(x,y)
-plt.plot(x,y_pred,color='green')
-plt.show() 
-
+#to plot graph
+plt.scatter(X,Y)
+plt.plot(X,y_predicted,color='red')
+plt.show()
 ```
 
 ## Output:
-![best fit line](2.png)
-![best fit line](3.png)
+![image](https://user-images.githubusercontent.com/94778101/200992023-dd6c373a-7cd7-46df-a405-2a4faa2cda33.png)
+
 
 
 ## Result:
